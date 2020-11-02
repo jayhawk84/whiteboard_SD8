@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
+using System.ComponentModel.Design;
+using System.Net.Http.Headers;
 
 namespace Palindrome
 {
@@ -34,17 +36,41 @@ namespace Palindrome
             return true;
         }
 
+        public static bool isItPal(string input)
+        {
+            bool flag = false;
+            string temp = input;
+            for (int i = 0; i < input.Length/2; i++)
+            {
+                char firstHalfChar = input[i];
+                char secondHalfChar = input[input.Length - i - 1];
+                if (firstHalfChar == secondHalfChar)
+                {
+                    flag = true;
+                }
+            }
+            return flag;
+        }
+
 
 
         static void Main(string[] args)
         {
             Console.WriteLine("Palindrome.Palindrome.Main()");
-
+            
             string testString = "racecar";
             string testString2 = "cat";
-
+            
             Console.WriteLine(isPalindrome(testString));
-
+            
+            Console.WriteLine(isItPal("whether"));
+            Console.WriteLine(isItPal("wow"));
+            Console.WriteLine(isItPal("tetheehtet"));
+            Console.WriteLine(isItPal("racecar"));
+            Console.WriteLine(isItPal("werthtrew"));
+            
+            int len = "hello".Length;
+            Console.WriteLine(len);
         }
     }
 }
